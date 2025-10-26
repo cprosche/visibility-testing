@@ -1,0 +1,327 @@
+{
+  "testCase": "007_polar_orbit",
+  "implementation": "rust-sgp4",
+  "version": "1.0.0",
+  "visibilityWindows": [
+    {
+      "start": "2025-10-26T10:23:30Z",
+      "end": "2025-10-26T10:32:45Z",
+      "maxElevation": 57.89,
+      "maxElevationTime": "2025-10-26T10:28:15Z",
+      "duration": 555.0,
+      "points": [
+        {
+          "time": "2025-10-26T10:23:30Z",
+          "azimuth": 21.43,
+          "elevation": 10.18,
+          "range": 2171.55,
+          "rangeRate": -6.528,
+          "altitude": 695.17
+        },
+        {
+          "time": "2025-10-26T10:23:45Z",
+          "azimuth": 22.13,
+          "elevation": 11.58,
+          "range": 2073.63,
+          "rangeRate": -6.479,
+          "altitude": 695.25
+        },
+        {
+          "time": "2025-10-26T10:24:00Z",
+          "azimuth": 22.92,
+          "elevation": 13.06,
+          "range": 1976.44,
+          "rangeRate": -6.42,
+          "altitude": 695.34
+        },
+        {
+          "time": "2025-10-26T10:24:15Z",
+          "azimuth": 23.78,
+          "elevation": 14.66,
+          "range": 1880.14,
+          "rangeRate": -6.35,
+          "altitude": 695.43
+        },
+        {
+          "time": "2025-10-26T10:24:30Z",
+          "azimuth": 24.74,
+          "elevation": 16.36,
+          "range": 1784.89,
+          "rangeRate": -6.266,
+          "altitude": 695.52
+        },
+        {
+          "time": "2025-10-26T10:24:45Z",
+          "azimuth": 25.83,
+          "elevation": 18.2,
+          "range": 1690.9,
+          "rangeRate": -6.166,
+          "altitude": 695.62
+        },
+        {
+          "time": "2025-10-26T10:25:00Z",
+          "azimuth": 27.06,
+          "elevation": 20.2,
+          "range": 1598.42,
+          "rangeRate": -6.045,
+          "altitude": 695.72
+        },
+        {
+          "time": "2025-10-26T10:25:15Z",
+          "azimuth": 28.47,
+          "elevation": 22.37,
+          "range": 1507.74,
+          "rangeRate": -5.899,
+          "altitude": 695.82
+        },
+        {
+          "time": "2025-10-26T10:25:30Z",
+          "azimuth": 30.1,
+          "elevation": 24.74,
+          "range": 1419.26,
+          "rangeRate": -5.722,
+          "altitude": 695.92
+        },
+        {
+          "time": "2025-10-26T10:25:45Z",
+          "azimuth": 32.01,
+          "elevation": 27.33,
+          "range": 1333.42,
+          "rangeRate": -5.508,
+          "altitude": 696.03
+        },
+        {
+          "time": "2025-10-26T10:26:00Z",
+          "azimuth": 34.27,
+          "elevation": 30.18,
+          "range": 1250.8,
+          "rangeRate": -5.246,
+          "altitude": 696.14
+        },
+        {
+          "time": "2025-10-26T10:26:15Z",
+          "azimuth": 37.0,
+          "elevation": 33.3,
+          "range": 1172.11,
+          "rangeRate": -4.926,
+          "altitude": 696.25
+        },
+        {
+          "time": "2025-10-26T10:26:30Z",
+          "azimuth": 40.34,
+          "elevation": 36.71,
+          "range": 1098.22,
+          "rangeRate": -4.536,
+          "altitude": 696.37
+        },
+        {
+          "time": "2025-10-26T10:26:45Z",
+          "azimuth": 44.5,
+          "elevation": 40.39,
+          "range": 1030.18,
+          "rangeRate": -4.062,
+          "altitude": 696.48
+        },
+        {
+          "time": "2025-10-26T10:27:00Z",
+          "azimuth": 49.77,
+          "elevation": 44.3,
+          "range": 969.24,
+          "rangeRate": -3.493,
+          "altitude": 696.6
+        },
+        {
+          "time": "2025-10-26T10:27:15Z",
+          "azimuth": 56.53,
+          "elevation": 48.29,
+          "range": 916.85,
+          "rangeRate": -2.82,
+          "altitude": 696.72
+        },
+        {
+          "time": "2025-10-26T10:27:30Z",
+          "azimuth": 65.27,
+          "elevation": 52.1,
+          "range": 874.56,
+          "rangeRate": -2.044,
+          "altitude": 696.85
+        },
+        {
+          "time": "2025-10-26T10:27:45Z",
+          "azimuth": 76.38,
+          "elevation": 55.33,
+          "range": 843.9,
+          "rangeRate": -1.181,
+          "altitude": 696.97
+        },
+        {
+          "time": "2025-10-26T10:28:00Z",
+          "azimuth": 89.83,
+          "elevation": 57.42,
+          "range": 826.18,
+          "rangeRate": -0.263,
+          "altitude": 697.1
+        },
+        {
+          "time": "2025-10-26T10:28:15Z",
+          "azimuth": 104.62,
+          "elevation": 57.89,
+          "range": 822.24,
+          "rangeRate": 0.67,
+          "altitude": 697.23
+        },
+        {
+          "time": "2025-10-26T10:28:30Z",
+          "azimuth": 118.98,
+          "elevation": 56.61,
+          "range": 832.29,
+          "rangeRate": 1.569,
+          "altitude": 697.36
+        },
+        {
+          "time": "2025-10-26T10:28:45Z",
+          "azimuth": 131.4,
+          "elevation": 53.91,
+          "range": 855.82,
+          "rangeRate": 2.397,
+          "altitude": 697.5
+        },
+        {
+          "time": "2025-10-26T10:29:00Z",
+          "azimuth": 141.38,
+          "elevation": 50.33,
+          "range": 891.78,
+          "rangeRate": 3.13,
+          "altitude": 697.63
+        },
+        {
+          "time": "2025-10-26T10:29:15Z",
+          "azimuth": 149.14,
+          "elevation": 46.37,
+          "range": 938.72,
+          "rangeRate": 3.758,
+          "altitude": 697.77
+        },
+        {
+          "time": "2025-10-26T10:29:30Z",
+          "azimuth": 155.16,
+          "elevation": 42.38,
+          "range": 995.09,
+          "rangeRate": 4.285,
+          "altitude": 697.91
+        },
+        {
+          "time": "2025-10-26T10:29:45Z",
+          "azimuth": 159.87,
+          "elevation": 38.54,
+          "range": 1059.37,
+          "rangeRate": 4.722,
+          "altitude": 698.05
+        },
+        {
+          "time": "2025-10-26T10:30:00Z",
+          "azimuth": 163.61,
+          "elevation": 34.97,
+          "range": 1130.2,
+          "rangeRate": 5.081,
+          "altitude": 698.19
+        },
+        {
+          "time": "2025-10-26T10:30:15Z",
+          "azimuth": 166.64,
+          "elevation": 31.68,
+          "range": 1206.41,
+          "rangeRate": 5.374,
+          "altitude": 698.34
+        },
+        {
+          "time": "2025-10-26T10:30:30Z",
+          "azimuth": 169.13,
+          "elevation": 28.67,
+          "range": 1287.02,
+          "rangeRate": 5.615,
+          "altitude": 698.48
+        },
+        {
+          "time": "2025-10-26T10:30:45Z",
+          "azimuth": 171.21,
+          "elevation": 25.94,
+          "range": 1371.25,
+          "rangeRate": 5.813,
+          "altitude": 698.63
+        },
+        {
+          "time": "2025-10-26T10:31:00Z",
+          "azimuth": 172.98,
+          "elevation": 23.44,
+          "range": 1458.45,
+          "rangeRate": 5.977,
+          "altitude": 698.78
+        },
+        {
+          "time": "2025-10-26T10:31:15Z",
+          "azimuth": 174.49,
+          "elevation": 21.16,
+          "range": 1548.1,
+          "rangeRate": 6.112,
+          "altitude": 698.93
+        },
+        {
+          "time": "2025-10-26T10:31:30Z",
+          "azimuth": 175.8,
+          "elevation": 19.07,
+          "range": 1639.78,
+          "rangeRate": 6.224,
+          "altitude": 699.08
+        },
+        {
+          "time": "2025-10-26T10:31:45Z",
+          "azimuth": 176.95,
+          "elevation": 17.14,
+          "range": 1733.14,
+          "rangeRate": 6.318,
+          "altitude": 699.23
+        },
+        {
+          "time": "2025-10-26T10:32:00Z",
+          "azimuth": 177.97,
+          "elevation": 15.36,
+          "range": 1827.91,
+          "rangeRate": 6.396,
+          "altitude": 699.38
+        },
+        {
+          "time": "2025-10-26T10:32:15Z",
+          "azimuth": 178.87,
+          "elevation": 13.7,
+          "range": 1923.85,
+          "rangeRate": 6.462,
+          "altitude": 699.53
+        },
+        {
+          "time": "2025-10-26T10:32:30Z",
+          "azimuth": 179.68,
+          "elevation": 12.15,
+          "range": 2020.78,
+          "rangeRate": 6.517,
+          "altitude": 699.69
+        },
+        {
+          "time": "2025-10-26T10:32:45Z",
+          "azimuth": 180.41,
+          "elevation": 10.7,
+          "range": 2118.54,
+          "rangeRate": 6.564,
+          "altitude": 699.84
+        }
+      ]
+    }
+  ],
+  "executionTime": 0.002,
+  "timestamp": "2025-10-26T16:28:37Z",
+  "metadata": {
+    "libraryName": "sgp4",
+    "libraryVersion": "2.0",
+    "platform": "Rust"
+  }
+}

@@ -1,8 +1,11 @@
 # Satellite Visibility Testing Framework
 
-[![Test Suite](https://github.com/YOUR_USERNAME/visibility-testing/actions/workflows/test.yml/badge.svg)](https://github.com/YOUR_USERNAME/visibility-testing/actions/workflows/test.yml)
-[![Performance Benchmark](https://github.com/YOUR_USERNAME/visibility-testing/actions/workflows/benchmark.yml/badge.svg)](https://github.com/YOUR_USERNAME/visibility-testing/actions/workflows/benchmark.yml)
-[![Docker Build](https://github.com/YOUR_USERNAME/visibility-testing/actions/workflows/docker-build.yml/badge.svg)](https://github.com/YOUR_USERNAME/visibility-testing/actions/workflows/docker-build.yml)
+[![Test Suite](https://github.com/caderosche/visibility-testing/actions/workflows/test.yml/badge.svg)](https://github.com/caderosche/visibility-testing/actions/workflows/test.yml)
+[![Performance Benchmark](https://github.com/caderosche/visibility-testing/actions/workflows/benchmark.yml/badge.svg)](https://github.com/caderosche/visibility-testing/actions/workflows/benchmark.yml)
+[![Docker Build](https://github.com/caderosche/visibility-testing/actions/workflows/docker-build.yml/badge.svg)](https://github.com/caderosche/visibility-testing/actions/workflows/docker-build.yml)
+[![Pages](https://github.com/caderosche/visibility-testing/actions/workflows/pages.yml/badge.svg)](https://github.com/caderosche/visibility-testing/actions/workflows/pages.yml)
+
+**[📊 View Live Dashboard](https://caderosche.github.io/visibility-testing/)** | [Documentation](docs/README.md)
 
 A comprehensive, multi-language testing framework for validating satellite visibility calculations. Compare implementations across different programming languages and libraries to ensure accuracy and consistency.
 
@@ -14,6 +17,7 @@ This project provides:
 - **Automated validation** to compare results against reference data
 - **Performance benchmarking** to compare execution speed
 - **CI/CD integration** via GitHub Actions
+- **Interactive dashboard** with visualizations and analytics ([view live](https://caderosche.github.io/visibility-testing/))
 
 ## Project Status
 
@@ -297,29 +301,39 @@ GitHub Actions automatically:
 - Collects and stores results for trending
 - Publishes charts and visualizations
 
-## Result Collection & Visualization
+## Interactive Dashboard
 
-The framework includes comprehensive result collection and graphing capabilities:
+**[📊 View Live Dashboard](https://caderosche.github.io/visibility-testing/)**
 
-### Data Collection
-- **Persistent Storage**: Results stored in SQLite database or JSON files
-- **Historical Tracking**: All test runs saved with timestamps for trend analysis
-- **Metrics Captured**: Execution time, accuracy deltas, pass/fail status, memory usage
+An interactive web dashboard visualizes test results and provides comprehensive analytics:
 
-### Visualizations
-- **Accuracy Charts**: Bar/scatter plots showing deltas from reference implementation
-- **Performance Charts**: Execution time comparisons by language and test case
-- **Trend Graphs**: Performance and accuracy trends over time
-- **Error Distributions**: Histograms of deviation from reference
-- **Comparison Matrix**: Heatmaps showing relative accuracy and performance
-- **Satellite Visualizations**: Ground tracks, sky charts, visibility timelines
+### Features
+- **Performance Rankings** - Real-time comparison of execution times across all implementations
+- **Accuracy Histograms** - Precision analysis with error distribution charts (azimuth, elevation, range)
+- **Test Case Breakdown** - Per-test performance comparison across languages
+- **Implementation Details** - Detailed stats cards for each language/library combination
+- **Dark Theme UI** - Modern, responsive design optimized for readability
 
-### Dashboard
-- Interactive web dashboard with latest test results
-- Historical benchmark comparison
-- Filtering by test case, language, and date range
-- Drill-down into specific failures or outliers
-- Export charts as PNG/SVG for reports
+### Technologies
+- Static site hosted on GitHub Pages
+- Chart.js for interactive visualizations
+- Automatically updated on every push to main
+- No backend required - pure HTML/CSS/JavaScript
+
+### Local Preview
+```bash
+# Run tests
+cd test-runner && cargo run --release -- run
+
+# Update dashboard data
+./docs/update-dashboard.sh
+
+# View locally
+cd docs && python3 -m http.server 8000
+# Open http://localhost:8000
+```
+
+See [docs/README.md](docs/README.md) for dashboard development details.
 
 ## Performance Benchmarks
 

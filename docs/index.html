@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satellite Visibility Testing - Results Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🛰️ Satellite Visibility Testing Framework</h1>
+            <p class="subtitle">Multi-language implementation comparison and performance benchmarks</p>
+        </header>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value" id="totalImplementations">-</div>
+                <div class="stat-label">Implementations</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="totalTests">-</div>
+                <div class="stat-label">Test Cases</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="passRate">-</div>
+                <div class="stat-label">Pass Rate</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="fastestImpl">-</div>
+                <div class="stat-label">Fastest</div>
+            </div>
+        </div>
+
+        <section class="section">
+            <h2>Performance Rankings</h2>
+            <p class="subtitle" style="margin-bottom: 20px; font-style: italic;">
+                Note: python-skyfield excluded from visualizations (80x slower due to high-precision astronomical calculations)
+            </p>
+            <div class="table-container">
+                <table id="performanceTable">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Implementation</th>
+                            <th>Language</th>
+                            <th>Avg Time</th>
+                            <th>Relative Speed</th>
+                            <th>Success Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody id="performanceTableBody">
+                        <tr>
+                            <td colspan="6" class="loading">Loading results...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Performance Comparison</h2>
+            <div class="chart-container">
+                <canvas id="performanceChart"></canvas>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Test Case Breakdown</h2>
+            <div class="chart-container">
+                <canvas id="testCaseChart"></canvas>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Accuracy Rankings</h2>
+            <p class="subtitle" style="margin-bottom: 20px;">
+                Comparing all implementations against the reference (python-skyfield). Lower error values and higher pass rates indicate better accuracy.
+            </p>
+            <div class="table-container">
+                <table id="accuracyTable">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Implementation</th>
+                            <th>Language</th>
+                            <th>Overall Grade</th>
+                            <th>Azimuth</th>
+                            <th>Elevation</th>
+                            <th>Range</th>
+                            <th>Pass Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody id="accuracyTableBody">
+                        <tr>
+                            <td colspan="8" class="loading">Loading accuracy rankings...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Accuracy Analysis by Implementation</h2>
+            <p class="subtitle" style="margin-bottom: 20px;">
+                Detailed breakdown of accuracy metrics for each implementation. Click through each card to see comprehensive error statistics.
+            </p>
+            <div id="accuracyByImplementation" class="accuracy-impl-grid">
+                <p class="loading">Loading accuracy analysis...</p>
+            </div>
+            <div class="accuracy-legend">
+                <h4>Understanding the Metrics:</h4>
+                <ul>
+                    <li><strong>Azimuth Error:</strong> Horizontal direction accuracy (compass bearing). Tolerance: ±0.1°</li>
+                    <li><strong>Elevation Error:</strong> Vertical angle accuracy (height above horizon). Tolerance: ±0.1°</li>
+                    <li><strong>Range Error:</strong> Distance accuracy to satellite. Tolerance: ±1.0 km</li>
+                    <li><span class="legend-color" style="background: var(--accent-green);"></span> <strong>Green:</strong> Within tolerance (excellent) |
+                        <span class="legend-color" style="background: var(--accent-orange);"></span> <strong>Orange:</strong> Exceeds tolerance (needs attention)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Test Results by Implementation</h2>
+            <div id="implementationDetails" class="implementation-grid">
+                <p class="loading">Loading implementation details...</p>
+            </div>
+        </section>
+
+        <footer>
+            <p>Last updated: <span id="lastUpdated">-</span></p>
+            <p><a href="https://github.com/caderosche/visibility-testing" target="_blank">View on GitHub</a></p>
+        </footer>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
