@@ -65,11 +65,24 @@ jobs:
       - name: Build Docker image
         working-directory: implementations/${{ matrix.implementation }}
         run: |
+          echo "Building visibility-test/${{ matrix.implementation }}:latest..."
           docker build \
             --cache-from type=local,src=/tmp/.buildx-cache \
             --cache-to type=local,dest=/tmp/.buildx-cache-new,mode=max \
             -t visibility-test/${{ matrix.implementation }}:latest \
             .
+
+          if [ $? -ne 0 ]; then
+            echo "Docker build failed!"
+            exit 1
+          fi
+
+          # Verify image was created
+          echo "Verifying image..."
+          docker images | grep visibility-test/${{ matrix.implementation }} || {
+            echo "Image visibility-test/${{ matrix.implementation }}:latest not found!"
+            exit 1
+          }
 
       - name: Move cache
         run: |

@@ -46,12 +46,29 @@ jobs:
       - name: Build all Docker images
         working-directory: test-runner
         run: |
+          echo "Building Docker images..."
           cargo run --release -- build
+          if [ $? -ne 0 ]; then
+            echo "Failed to build Docker images"
+            exit 1
+          fi
+
+          # Verify images were created
+          echo "Verifying Docker images..."
+          docker images | grep visibility-test || {
+            echo "No visibility-test images found!"
+            exit 1
+          }
 
       - name: Run all tests
         working-directory: test-runner
         run: |
+          echo "Running tests..."
           cargo run --release -- run
+          if [ $? -ne 0 ]; then
+            echo "Tests failed"
+            exit 1
+          fi
 
       - name: Prepare dashboard data
         run: |

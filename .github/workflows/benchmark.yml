@@ -37,7 +37,16 @@ jobs:
       - name: Build all Docker images
         working-directory: test-runner
         run: |
+          echo "Building Docker images..."
           cargo run --release -- build
+          if [ $? -ne 0 ]; then
+            echo "Failed to build Docker images"
+            exit 1
+          fi
+
+          # Verify images were created
+          echo "Verifying Docker images..."
+          docker images | grep visibility-test
 
       - name: Run benchmark
         working-directory: test-runner
@@ -49,6 +58,7 @@ jobs:
           echo "" >> benchmark-results.md
 
           # Run all implementations and capture timing
+          echo "Running benchmarks..."
           cargo run --release -- run 2>&1 | tee benchmark-output.log
 
           # Extract summary
