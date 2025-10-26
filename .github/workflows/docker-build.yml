@@ -1,0 +1,121 @@
+name: Build Docker Images
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'implementations/**'
+      - 'test-runner/**'
+  workflow_dispatch:
+
+env:
+  DOCKER_BUILDKIT: 1
+
+jobs:
+  detect-changes:
+    name: Detect Changed Implementations
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Detect changed implementations
+        id: set-matrix
+        run: |
+          # Get list of changed directories
+          if [ "${{ github.event_name }}" == "push" ]; then
+            changed_files=$(git diff --name-only HEAD^ HEAD)
+          else
+            # For workflow_dispatch, build all
+            changed_files=$(find implementations -type f)
+          fi
+
+          # Extract implementation names
+          implementations=$(echo "$changed_files" | \
+            grep "^implementations/" | \
+            cut -d'/' -f2 | \
+            sort -u | \
+            jq -R -s -c 'split("\n")[:-1]')
+
+          # If no implementations changed, use empty array
+          if [ -z "$implementations" ] || [ "$implementations" == "[]" ]; then
+            implementations='[]'
+          fi
+
+          echo "matrix=$implementations" >> $GITHUB_OUTPUT
+          echo "Changed implementations: $implementations"
+
+  build-images:
+    name: Build ${{ matrix.implementation }}
+    runs-on: ubuntu-latest
+    needs: detect-changes
+    if: needs.detect-changes.outputs.matrix != '[]'
+    strategy:
+      fail-fast: false
+      matrix:
+        implementation: ${{ fromJson(needs.detect-changes.outputs.matrix) }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: visibility-test/${{ matrix.implementation }}
+          tags: |
+            type=ref,event=branch
+            type=sha,prefix={{branch}}-
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: Build Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./implementations/${{ matrix.implementation }}
+          push: false
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Test image
+        run: |
+          docker run --rm \
+            -v ${{ github.workspace }}/test-data:/test-data:ro \
+            -v ${{ github.workspace }}/results:/results \
+            visibility-test/${{ matrix.implementation }}:latest \
+            001_iss_nyc
+
+          # Check if results were generated
+          if [ ! -f results/*${{ matrix.implementation }}*.json ]; then
+            echo "Error: No results generated"
+            exit 1
+          fi
+
+          echo "✓ Image test passed"
+
+  build-summary:
+    name: Build Summary
+    runs-on: ubuntu-latest
+    needs: [detect-changes, build-images]
+    if: always()
+    steps:
+      - name: Post summary
+        run: |
+          echo "## Docker Build Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ "${{ needs.detect-changes.outputs.matrix }}" == "[]" ]; then
+            echo "No implementation changes detected." >> $GITHUB_STEP_SUMMARY
+          else
+            echo "**Changed implementations:** ${{ needs.detect-changes.outputs.matrix }}" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**Build status:** ${{ needs.build-images.result }}" >> $GITHUB_STEP_SUMMARY
+          fi

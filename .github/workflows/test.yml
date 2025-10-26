@@ -1,0 +1,143 @@
+name: Test Suite
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+env:
+  DOCKER_BUILDKIT: 1
+  COMPOSE_DOCKER_CLI_BUILD: 1
+
+jobs:
+  discover:
+    name: Discover Implementations
+    runs-on: ubuntu-latest
+    outputs:
+      implementations: ${{ steps.discover.outputs.implementations }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Rust
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+        with:
+          toolchain: stable
+
+      - name: Build test runner
+        working-directory: test-runner
+        run: cargo build --release
+
+      - name: Discover implementations
+        id: discover
+        working-directory: test-runner
+        run: |
+          implementations=$(cargo run --release -- discover | grep "●" | awk '{print $2}' | jq -R -s -c 'split("\n")[:-1]')
+          echo "implementations=$implementations" >> $GITHUB_OUTPUT
+          echo "Found implementations: $implementations"
+
+  build-and-test:
+    name: Build & Test ${{ matrix.implementation }}
+    runs-on: ubuntu-latest
+    needs: discover
+    strategy:
+      fail-fast: false
+      matrix:
+        implementation: ${{ fromJson(needs.discover.outputs.implementations) }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Cache Docker layers
+        uses: actions/cache@v3
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ matrix.implementation }}-${{ hashFiles(format('implementations/{0}/**', matrix.implementation)) }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-${{ matrix.implementation }}-
+            ${{ runner.os }}-buildx-
+
+      - name: Build Docker image
+        working-directory: implementations/${{ matrix.implementation }}
+        run: |
+          docker build \
+            --cache-from type=local,src=/tmp/.buildx-cache \
+            --cache-to type=local,dest=/tmp/.buildx-cache-new,mode=max \
+            -t visibility-test/${{ matrix.implementation }}:latest \
+            .
+
+      - name: Move cache
+        run: |
+          rm -rf /tmp/.buildx-cache
+          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+
+      - name: Set up Rust
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+        with:
+          toolchain: stable
+
+      - name: Build test runner
+        working-directory: test-runner
+        run: cargo build --release
+
+      - name: Run tests
+        working-directory: test-runner
+        run: |
+          cargo run --release -- run -i ${{ matrix.implementation }} 2>&1 | tee test-output.log
+          echo "Exit code: $?"
+
+      - name: Validate results
+        working-directory: test-runner
+        run: |
+          cargo run --release -- validate -i ${{ matrix.implementation }} 2>&1 | tee validation-output.log
+
+          # Check if validation passed (10/10)
+          if grep -q "Validation: 10/10 test cases match reference" validation-output.log; then
+            echo "✓ Validation passed: 10/10 test cases"
+            exit 0
+          else
+            echo "✗ Validation failed"
+            cat validation-output.log
+            exit 1
+          fi
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results-${{ matrix.implementation }}
+          path: |
+            test-runner/test-output.log
+            test-runner/validation-output.log
+            results/*${{ matrix.implementation }}*.json
+          retention-days: 30
+
+  test-summary:
+    name: Test Summary
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    if: always()
+    steps:
+      - name: Check test results
+        run: |
+          if [ "${{ needs.build-and-test.result }}" == "success" ]; then
+            echo "✓ All implementations passed"
+            exit 0
+          else
+            echo "✗ Some implementations failed"
+            exit 1
+          fi
+
+      - name: Post summary
+        if: always()
+        run: |
+          echo "## Test Suite Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Status:** ${{ needs.build-and-test.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "All implementations tested against reference data." >> $GITHUB_STEP_SUMMARY
