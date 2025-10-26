@@ -1,0 +1,263 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Satellite Visibility Test Data Schema",
+  "description": "Defines the format for test cases and expected results for satellite visibility calculations",
+  "definitions": {
+    "TestCaseInput": {
+      "type": "object",
+      "description": "Input test case specification",
+      "required": ["name", "description", "satellite", "observer", "timeWindow", "minElevation"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Unique identifier for this test case"
+        },
+        "description": {
+          "type": "string",
+          "description": "Human-readable description of what this test case validates"
+        },
+        "satellite": {
+          "type": "object",
+          "description": "Satellite orbital elements",
+          "required": ["tle"],
+          "properties": {
+            "tle": {
+              "type": "array",
+              "description": "Two-Line Element (TLE) set in standard NORAD format",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "name": {
+              "type": "string",
+              "description": "Optional friendly name for the satellite"
+            }
+          }
+        },
+        "observer": {
+          "type": "object",
+          "description": "Observer location on Earth",
+          "required": ["latitude", "longitude", "altitude"],
+          "properties": {
+            "latitude": {
+              "type": "number",
+              "description": "Latitude in decimal degrees (-90 to 90)",
+              "minimum": -90,
+              "maximum": 90
+            },
+            "longitude": {
+              "type": "number",
+              "description": "Longitude in decimal degrees (-180 to 180)",
+              "minimum": -180,
+              "maximum": 180
+            },
+            "altitude": {
+              "type": "number",
+              "description": "Altitude above sea level in meters",
+              "minimum": -500,
+              "maximum": 10000
+            },
+            "name": {
+              "type": "string",
+              "description": "Optional friendly name for the location"
+            }
+          }
+        },
+        "timeWindow": {
+          "type": "object",
+          "description": "Time range for visibility calculations",
+          "required": ["start", "end", "step"],
+          "properties": {
+            "start": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Start time in ISO 8601 format (UTC)"
+            },
+            "end": {
+              "type": "string",
+              "format": "date-time",
+              "description": "End time in ISO 8601 format (UTC)"
+            },
+            "step": {
+              "type": "number",
+              "description": "Time step in seconds between calculations",
+              "minimum": 1,
+              "maximum": 3600
+            }
+          }
+        },
+        "minElevation": {
+          "type": "number",
+          "description": "Minimum elevation angle in degrees for visibility (typically 0-10)",
+          "minimum": -90,
+          "maximum": 90
+        },
+        "metadata": {
+          "type": "object",
+          "description": "Optional metadata about the test case",
+          "properties": {
+            "orbitType": {
+              "type": "string",
+              "enum": ["LEO", "MEO", "GEO", "HEO"],
+              "description": "Orbit classification"
+            },
+            "tags": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Tags for categorizing test cases"
+            },
+            "difficulty": {
+              "type": "string",
+              "enum": ["basic", "intermediate", "advanced", "edge-case"],
+              "description": "Complexity level of the test case"
+            }
+          }
+        }
+      }
+    },
+    "VisibilityPoint": {
+      "type": "object",
+      "description": "Satellite position and visibility data at a specific time",
+      "required": ["time", "azimuth", "elevation", "range"],
+      "properties": {
+        "time": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Time of this observation in ISO 8601 format (UTC)"
+        },
+        "azimuth": {
+          "type": "number",
+          "description": "Azimuth angle in degrees (0-360, 0=North, 90=East)",
+          "minimum": 0,
+          "maximum": 360
+        },
+        "elevation": {
+          "type": "number",
+          "description": "Elevation angle in degrees above horizon (-90 to 90)",
+          "minimum": -90,
+          "maximum": 90
+        },
+        "range": {
+          "type": "number",
+          "description": "Range to satellite in kilometers",
+          "minimum": 0
+        },
+        "rangeRate": {
+          "type": "number",
+          "description": "Range rate (radial velocity) in kilometers per second"
+        },
+        "altitude": {
+          "type": "number",
+          "description": "Satellite altitude above Earth's surface in kilometers"
+        }
+      }
+    },
+    "VisibilityWindow": {
+      "type": "object",
+      "description": "A continuous period when the satellite is visible",
+      "required": ["start", "end", "maxElevation", "maxElevationTime"],
+      "properties": {
+        "start": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Start time of visibility window (ISO 8601 UTC)"
+        },
+        "end": {
+          "type": "string",
+          "format": "date-time",
+          "description": "End time of visibility window (ISO 8601 UTC)"
+        },
+        "maxElevation": {
+          "type": "number",
+          "description": "Maximum elevation angle during this pass (degrees)",
+          "minimum": -90,
+          "maximum": 90
+        },
+        "maxElevationTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Time when maximum elevation occurs (ISO 8601 UTC)"
+        },
+        "duration": {
+          "type": "number",
+          "description": "Duration of visibility window in seconds"
+        },
+        "points": {
+          "type": "array",
+          "description": "Detailed visibility points within this window",
+          "items": {
+            "$ref": "#/definitions/VisibilityPoint"
+          }
+        }
+      }
+    },
+    "TestCaseOutput": {
+      "type": "object",
+      "description": "Expected output from visibility calculation",
+      "required": ["testCase", "implementation", "version", "visibilityWindows"],
+      "properties": {
+        "testCase": {
+          "type": "string",
+          "description": "Name of the test case (matches input)"
+        },
+        "implementation": {
+          "type": "string",
+          "description": "Implementation identifier (python, javascript, rust, etc.)"
+        },
+        "version": {
+          "type": "string",
+          "description": "Version of the implementation"
+        },
+        "visibilityWindows": {
+          "type": "array",
+          "description": "List of visibility windows when satellite is above minElevation",
+          "items": {
+            "$ref": "#/definitions/VisibilityWindow"
+          }
+        },
+        "executionTime": {
+          "type": "number",
+          "description": "Execution time in seconds",
+          "minimum": 0
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When this result was generated (ISO 8601 UTC)"
+        },
+        "metadata": {
+          "type": "object",
+          "description": "Additional metadata about the execution",
+          "properties": {
+            "libraryName": {
+              "type": "string",
+              "description": "Name of the SGP4 library used"
+            },
+            "libraryVersion": {
+              "type": "string",
+              "description": "Version of the SGP4 library"
+            },
+            "platform": {
+              "type": "string",
+              "description": "Platform/OS where calculation was performed"
+            }
+          }
+        }
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "title": "Test Case Input",
+      "$ref": "#/definitions/TestCaseInput"
+    },
+    {
+      "title": "Test Case Output",
+      "$ref": "#/definitions/TestCaseOutput"
+    }
+  ]
+}

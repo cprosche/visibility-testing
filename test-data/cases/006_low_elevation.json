@@ -1,0 +1,29 @@
+{
+  "name": "006_low_elevation",
+  "description": "Low elevation pass near horizon (challenging atmospheric refraction conditions)",
+  "satellite": {
+    "name": "NOAA-18",
+    "tle": [
+      "NOAA-18",
+      "1 28654U 05018A   25299.27886434  .00000173  00000-0  11483-3 0  9999",
+      "2 28654  98.8331  17.1344 0015264  95.8984 264.3929 14.13656983 53267"
+    ]
+  },
+  "observer": {
+    "name": "Anchorage, Alaska",
+    "latitude": 61.2181,
+    "longitude": -149.9003,
+    "altitude": 35
+  },
+  "timeWindow": {
+    "start": "2025-10-26T08:00:00Z",
+    "end": "2025-10-26T10:00:00Z",
+    "step": 5
+  },
+  "minElevation": 0.0,
+  "metadata": {
+    "orbitType": "LEO",
+    "tags": ["low-elevation", "atmospheric-refraction", "polar-observer"],
+    "difficulty": "edge-case"
+  }
+}

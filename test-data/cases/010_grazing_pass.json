@@ -1,0 +1,29 @@
+{
+  "name": "010_grazing_pass",
+  "description": "Grazing pass with maximum elevation just above threshold (edge case for visibility detection)",
+  "satellite": {
+    "name": "COSMOS 2251 DEB",
+    "tle": [
+      "COSMOS 2251 DEB",
+      "1 34454U 93036SX  25299.28877440  .00000747  00000-0  25027-3 0  9995",
+      "2 34454  74.0607   5.0208 0034064  80.8977 279.6030 14.38702223873857"
+    ]
+  },
+  "observer": {
+    "name": "Tokyo",
+    "latitude": 35.6762,
+    "longitude": 139.6503,
+    "altitude": 40
+  },
+  "timeWindow": {
+    "start": "2025-10-26T14:00:00Z",
+    "end": "2025-10-26T16:00:00Z",
+    "step": 5
+  },
+  "minElevation": 10.0,
+  "metadata": {
+    "orbitType": "LEO",
+    "tags": ["grazing-pass", "edge-case", "debris"],
+    "difficulty": "edge-case"
+  }
+}

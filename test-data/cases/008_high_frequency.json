@@ -1,0 +1,29 @@
+{
+  "name": "008_high_frequency",
+  "description": "High-frequency sampling (1-second intervals) of ISS zenith pass over Houston",
+  "satellite": {
+    "name": "ISS (ZARYA)",
+    "tle": [
+      "ISS (ZARYA)",
+      "1 25544U 98067A   25299.20038895  .00014735  00000-0  27050-3 0  9999",
+      "2 25544  51.6346  17.8374 0004636 339.5768  20.5035 15.49479093535488"
+    ]
+  },
+  "observer": {
+    "name": "Houston",
+    "latitude": 29.7604,
+    "longitude": -95.3698,
+    "altitude": 12
+  },
+  "timeWindow": {
+    "start": "2025-10-26T03:20:00Z",
+    "end": "2024-01-01T03:35:00Z",
+    "step": 1
+  },
+  "minElevation": 20.0,
+  "metadata": {
+    "orbitType": "LEO",
+    "tags": ["high-frequency", "zenith-pass", "precision"],
+    "difficulty": "advanced"
+  }
+}

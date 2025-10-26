@@ -1,0 +1,16 @@
+{
+  "name": "visibility-calculator-satellitejs",
+  "version": "1.0.0",
+  "description": "Satellite visibility calculator using satellite.js library",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "satellite.js": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

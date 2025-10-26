@@ -1,0 +1,29 @@
+{
+  "name": "003_gps_denver",
+  "description": "GPS satellite visibility from Denver, Colorado (high altitude observer)",
+  "satellite": {
+    "name": "GPS BIIR-11 (PRN 19)",
+    "tle": [
+      "GPS BIIR-11 (PRN 19)",
+      "1 40294U 14068A   25297.59791060 -.00000070  00000-0  00000-0 0  9998",
+      "2 40294  56.8228  40.0465 0061221  69.8875 290.7820  2.00561963 80486"
+    ]
+  },
+  "observer": {
+    "name": "Denver",
+    "latitude": 39.7392,
+    "longitude": -104.9903,
+    "altitude": 1609
+  },
+  "timeWindow": {
+    "start": "2025-10-26T12:00:00Z",
+    "end": "2025-10-26T18:00:00Z",
+    "step": 60
+  },
+  "minElevation": 5.0,
+  "metadata": {
+    "orbitType": "MEO",
+    "tags": ["GPS", "navigation", "high-altitude-observer"],
+    "difficulty": "intermediate"
+  }
+}

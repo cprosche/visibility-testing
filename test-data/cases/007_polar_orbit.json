@@ -1,0 +1,29 @@
+{
+  "name": "007_polar_orbit",
+  "description": "Sun-synchronous polar orbit satellite over London",
+  "satellite": {
+    "name": "LANDSAT 8",
+    "tle": [
+      "LANDSAT 8",
+      "1 39084U 13008A   25299.27439416  .00000612  00000-0  14596-3 0  9996",
+      "2 39084  98.2124   8.0348 0001312  88.4165 271.7183 14.57100723663839"
+    ]
+  },
+  "observer": {
+    "name": "London",
+    "latitude": 51.5074,
+    "longitude": -0.1278,
+    "altitude": 11
+  },
+  "timeWindow": {
+    "start": "2025-10-26T00:00:00Z",
+    "end": "2025-10-26T12:00:00Z",
+    "step": 15
+  },
+  "minElevation": 10.0,
+  "metadata": {
+    "orbitType": "LEO",
+    "tags": ["polar-orbit", "sun-synchronous", "earth-observation"],
+    "difficulty": "intermediate"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "testCase": "008_high_frequency",
+  "implementation": "csharp-sgp.net",
+  "version": "1.0.0",
+  "visibilityWindows": [],
+  "executionTime": 1.95E-05,
+  "timestamp": "2025-10-26T15:30:04Z",
+  "metadata": {
+    "libraryName": "Zeptomoby.OrbitTools.Core",
+    "libraryVersion": "2.0.0",
+    "platform": ".NET 8.0.21"
+  }
+}

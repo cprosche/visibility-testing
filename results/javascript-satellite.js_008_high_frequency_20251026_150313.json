@@ -1,0 +1,13 @@
+{
+  "testCase": "008_high_frequency",
+  "implementation": "javascript-satellite.js",
+  "version": "1.0.0",
+  "visibilityWindows": [],
+  "executionTime": 0,
+  "timestamp": "2025-10-26T15:03:13Z",
+  "metadata": {
+    "libraryName": "satellite.js",
+    "libraryVersion": "5.0.0",
+    "platform": "Node.js v18.20.8"
+  }
+}

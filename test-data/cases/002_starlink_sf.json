@@ -1,0 +1,29 @@
+{
+  "name": "002_starlink_sf",
+  "description": "Starlink satellite pass over San Francisco",
+  "satellite": {
+    "name": "STARLINK-2616",
+    "tle": [
+      "STARLINK-2616",
+      "1 48274U 21035A   25299.26367382  .00033351  00000-0  39189-3 0  9998",
+      "2 48274  41.4668 305.1146 0011051 285.4259  74.5358 15.60681354256610"
+    ]
+  },
+  "observer": {
+    "name": "San Francisco",
+    "latitude": 37.7749,
+    "longitude": -122.4194,
+    "altitude": 50
+  },
+  "timeWindow": {
+    "start": "2025-10-26T06:00:00Z",
+    "end": "2025-10-26T12:00:00Z",
+    "step": 10
+  },
+  "minElevation": 15.0,
+  "metadata": {
+    "orbitType": "LEO",
+    "tags": ["starlink", "constellation", "coastal"],
+    "difficulty": "basic"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "001_iss_nyc",
+  "description": "ISS visibility passes over New York City during 24-hour period",
+  "satellite": {
+    "name": "ISS (ZARYA)",
+    "tle": [
+      "ISS (ZARYA)",
+      "1 25544U 98067A   25299.20038895  .00014735  00000-0  27050-3 0  9999",
+      "2 25544  51.6346  17.8374 0004636 339.5768  20.5035 15.49479093535488"
+    ]
+  },
+  "observer": {
+    "name": "New York City",
+    "latitude": 40.7128,
+    "longitude": -74.0060,
+    "altitude": 10
+  },
+  "timeWindow": {
+    "start": "2025-10-26T00:00:00Z",
+    "end": "2025-10-27T00:00:00Z",
+    "step": 10
+  },
+  "minElevation": 10.0,
+  "metadata": {
+    "orbitType": "LEO",
+    "tags": ["ISS", "urban", "multi-pass"],
+    "difficulty": "basic"
+  }
+}

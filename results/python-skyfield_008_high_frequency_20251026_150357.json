@@ -1,0 +1,13 @@
+{
+  "testCase": "008_high_frequency",
+  "implementation": "python-skyfield",
+  "version": "1.0.0",
+  "visibilityWindows": [],
+  "executionTime": 0.0,
+  "timestamp": "2025-10-26T15:03:57Z",
+  "metadata": {
+    "libraryName": "skyfield",
+    "libraryVersion": "1.49",
+    "platform": "Python 3.11.14"
+  }
+}

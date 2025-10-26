@@ -1,0 +1,29 @@
+{
+  "name": "004_geo_satellite",
+  "description": "Geostationary weather satellite visibility from Miami (should appear stationary)",
+  "satellite": {
+    "name": "GOES-16",
+    "tle": [
+      "GOES-16",
+      "1 41866U 16071A   25299.29087176 -.00000079  00000-0  00000-0 0  9994",
+      "2 41866   0.0685  71.1278 0002612 161.2736 162.5709  1.00272508 32751"
+    ]
+  },
+  "observer": {
+    "name": "Miami",
+    "latitude": 25.7617,
+    "longitude": -80.1918,
+    "altitude": 5
+  },
+  "timeWindow": {
+    "start": "2025-10-26T00:00:00Z",
+    "end": "2025-10-26T06:00:00Z",
+    "step": 300
+  },
+  "minElevation": 20.0,
+  "metadata": {
+    "orbitType": "GEO",
+    "tags": ["geostationary", "weather", "stationary"],
+    "difficulty": "intermediate"
+  }
+}

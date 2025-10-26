@@ -1,0 +1,59 @@
+services:
+  python-skyfield:
+    build:
+      context: ./implementations/python-skyfield
+      dockerfile: Dockerfile
+    image: visibility-test/python-skyfield:latest
+    container_name: visibility-test-python-skyfield
+    volumes:
+      - ./test-data:/test-data:ro
+      - ./results:/results
+    command: []  # Run all test cases
+
+  python-sgp4:
+    build:
+      context: ./implementations/python-sgp4
+      dockerfile: Dockerfile
+    image: visibility-test/python-sgp4:latest
+    container_name: visibility-test-python-sgp4
+    volumes:
+      - ./test-data:/test-data:ro
+      - ./results:/results
+    command: []  # Run all test cases
+
+  javascript-satellite.js:
+    build:
+      context: ./implementations/javascript-satellite.js
+      dockerfile: Dockerfile
+    image: visibility-test/javascript-satellite.js:latest
+    container_name: visibility-test-javascript-satellite.js
+    volumes:
+      - ./test-data:/test-data:ro
+      - ./results:/results
+    command: []  # Run all test cases
+
+  rust-sgp4:
+    build:
+      context: ./implementations/rust-sgp4
+      dockerfile: Dockerfile
+    image: visibility-test/rust-sgp4:latest
+    container_name: visibility-test-rust-sgp4
+    volumes:
+      - ./test-data:/test-data:ro
+      - ./results:/results
+    command: []  # Run all test cases
+
+  csharp-sgp.net:
+    build:
+      context: ./implementations/csharp-sgp.net
+      dockerfile: Dockerfile
+    image: visibility-test/csharp-sgp.net:latest
+    container_name: visibility-test-csharp-sgp.net
+    volumes:
+      - ./test-data:/test-data:ro
+      - ./results:/results
+    command: []  # Run all test cases
+
+networks:
+  default:
+    name: visibility-test-network
