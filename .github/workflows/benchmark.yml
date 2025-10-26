@@ -2,7 +2,7 @@ name: Performance Benchmark
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   workflow_dispatch:
   schedule:
     # Run weekly on Sundays at 00:00 UTC

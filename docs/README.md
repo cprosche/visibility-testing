@@ -68,7 +68,7 @@ docs/
 The dashboard is automatically deployed to GitHub Pages via the `.github/workflows/pages.yml` workflow:
 
 1. **Triggered by:**
-   - Push to `main` branch
+   - Push to `master` branch
    - Manual workflow dispatch
    - Daily schedule (00:00 UTC)
 

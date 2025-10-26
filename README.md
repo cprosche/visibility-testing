@@ -317,7 +317,7 @@ An interactive web dashboard visualizes test results and provides comprehensive 
 ### Technologies
 - Static site hosted on GitHub Pages
 - Chart.js for interactive visualizations
-- Automatically updated on every push to main
+- Automatically updated on every push to master
 - No backend required - pure HTML/CSS/JavaScript
 
 ### Local Preview

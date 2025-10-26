@@ -7,8 +7,8 @@ This directory contains CI/CD workflows for the Satellite Visibility Testing Fra
 ### 1. Test Suite (`test.yml`)
 
 **Triggers:**
-- Push to `main` or `develop` branches
-- Pull requests to `main`
+- Push to `master` or `develop` branches
+- Pull requests to `master`
 - Manual workflow dispatch
 
 **What it does:**
@@ -29,7 +29,7 @@ This directory contains CI/CD workflows for the Satellite Visibility Testing Fra
 ### 2. Performance Benchmark (`benchmark.yml`)
 
 **Triggers:**
-- Push to `main` branch
+- Push to `master` branch
 - Weekly schedule (Sundays at 00:00 UTC)
 - Manual workflow dispatch
 
@@ -50,7 +50,7 @@ This directory contains CI/CD workflows for the Satellite Visibility Testing Fra
 ### 3. Docker Build (`docker-build.yml`)
 
 **Triggers:**
-- Push to `main` with changes in `implementations/` or `test-runner/`
+- Push to `master` with changes in `implementations/` or `test-runner/`
 - Manual workflow dispatch
 
 **What it does:**
