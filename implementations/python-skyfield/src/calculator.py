@@ -9,7 +9,19 @@ import numpy as np
 
 
 class VisibilityCalculator:
-    """Calculate satellite visibility using Skyfield."""
+    """
+    Calculate satellite visibility using Skyfield.
+
+    Note: Skyfield is significantly slower than pure SGP4 implementations
+    (~80x slower) because it performs high-precision astronomical calculations
+    including:
+    - Precession and nutation corrections
+    - Earth orientation parameters
+    - High-accuracy coordinate transformations
+
+    This makes it ideal as a reference implementation for accuracy validation,
+    though not suitable for high-performance real-time applications.
+    """
 
     def __init__(self):
         """Initialize the calculator with time scale."""
@@ -86,12 +98,14 @@ class VisibilityCalculator:
         """Calculate satellite positions for all times."""
         positions = []
 
+        # Calculate difference between observer and satellite (once)
+        difference = satellite - observer
+
         for dt in times:
             # Convert to Skyfield time
             t = self.ts.utc(dt.year, dt.month, dt.day, dt.hour, dt.minute, dt.second)
 
-            # Calculate difference between observer and satellite
-            difference = satellite - observer
+            # Calculate topocentric position
             topocentric = difference.at(t)
 
             # Get alt-azimuth coordinates
@@ -108,6 +122,7 @@ class VisibilityCalculator:
             range_rate = distance_next - distance.km  # km/s
 
             # Get satellite altitude above Earth's surface
+            # Use geocentric distance from satellite position
             geocentric = satellite.at(t)
             sat_altitude = geocentric.distance().km - 6371.0  # Earth radius
 

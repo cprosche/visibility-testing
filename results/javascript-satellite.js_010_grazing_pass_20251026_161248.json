@@ -1,0 +1,13 @@
+{
+  "testCase": "010_grazing_pass",
+  "implementation": "javascript-satellite.js",
+  "version": "1.0.0",
+  "visibilityWindows": [],
+  "executionTime": 0.003,
+  "timestamp": "2025-10-26T16:12:48Z",
+  "metadata": {
+    "libraryName": "satellite.js",
+    "libraryVersion": "5.0.0",
+    "platform": "Node.js v18.20.8"
+  }
+}

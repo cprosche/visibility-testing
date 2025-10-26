@@ -1,0 +1,13 @@
+{
+  "executionTime": 0.0122795,
+  "implementation": "cpp-sgp4",
+  "metadata": {
+    "libraryName": "sat_code (Bill Gray)",
+    "libraryVersion": "2023",
+    "platform": "C++17"
+  },
+  "testCase": "001_iss_nyc",
+  "timestamp": "2025-10-26T16:06:28Z",
+  "version": "1.0.0",
+  "visibilityWindows": []
+}

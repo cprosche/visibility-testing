@@ -1,0 +1,13 @@
+{
+  "executionTime": 0.000322791,
+  "implementation": "cpp-sgp4",
+  "metadata": {
+    "libraryName": "sat_code (Bill Gray)",
+    "libraryVersion": "2023",
+    "platform": "C++17"
+  },
+  "testCase": "003_gps_denver",
+  "timestamp": "2025-10-26T15:43:20Z",
+  "version": "1.0.0",
+  "visibilityWindows": []
+}

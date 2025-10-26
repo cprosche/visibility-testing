@@ -1,0 +1,13 @@
+{
+  "testCase": "010_grazing_pass",
+  "implementation": "python-sgp4",
+  "version": "1.0.0",
+  "visibilityWindows": [],
+  "executionTime": 0.014,
+  "timestamp": "2025-10-26T16:23:36Z",
+  "metadata": {
+    "libraryName": "sgp4",
+    "libraryVersion": "2.25",
+    "platform": "Python 3.11.14"
+  }
+}

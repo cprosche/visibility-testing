@@ -1,0 +1,13 @@
+{
+  "testCase": "010_grazing_pass",
+  "implementation": "python-skyfield",
+  "version": "1.0.0",
+  "visibilityWindows": [],
+  "executionTime": 0.603,
+  "timestamp": "2025-10-26T16:23:25Z",
+  "metadata": {
+    "libraryName": "skyfield",
+    "libraryVersion": "1.49",
+    "platform": "Python 3.11.14"
+  }
+}

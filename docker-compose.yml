@@ -54,6 +54,17 @@ services:
       - ./results:/results
     command: []  # Run all test cases
 
+  cpp-sgp4:
+    build:
+      context: ./implementations/cpp-sgp4
+      dockerfile: Dockerfile
+    image: visibility-test/cpp-sgp4:latest
+    container_name: visibility-test-cpp-sgp4
+    volumes:
+      - ./test-data:/test-data:ro
+      - ./results:/results
+    command: []  # Run all test cases
+
 networks:
   default:
     name: visibility-test-network

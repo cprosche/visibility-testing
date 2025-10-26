@@ -1,0 +1,13 @@
+{
+  "testCase": "010_grazing_pass",
+  "implementation": "rust-sgp4",
+  "version": "1.0.0",
+  "visibilityWindows": [],
+  "executionTime": 0.001,
+  "timestamp": "2025-10-26T16:14:54Z",
+  "metadata": {
+    "libraryName": "sgp4",
+    "libraryVersion": "2.0",
+    "platform": "Rust"
+  }
+}
