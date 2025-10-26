@@ -183,8 +183,8 @@ Update README.md with your repository URL:
 
 The workflows use:
 - `actions/checkout@v4`
-- `actions/cache@v3`
-- `actions/upload-artifact@v3`
+- `actions/cache@v4`
+- `actions/upload-artifact@v4`
 - `docker/setup-buildx-action@v3`
 - `docker/build-push-action@v5`
 - `actions-rust-lang/setup-rust-toolchain@v1`
