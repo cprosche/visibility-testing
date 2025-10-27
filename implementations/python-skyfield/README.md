@@ -4,7 +4,7 @@ Primary reference implementation for satellite visibility calculations using the
 
 ## Overview
 
-This implementation uses [Skyfield](https://rhodesmill.org/skyfield/), a high-precision astronomy library that provides accurate satellite position calculations using the SGP4 propagator.
+This implementation uses [Skyfield](https://github.com/skyfielders/python-skyfield), a high-precision astronomy library that provides accurate satellite position calculations using the SGP4 propagator.
 
 **Status**: Primary Reference Implementation - All other implementations are validated against this one.
 
