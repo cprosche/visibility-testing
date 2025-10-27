@@ -9,6 +9,28 @@
 
 A comprehensive, multi-language testing framework for validating satellite visibility calculations. Compare implementations across different programming languages and libraries to ensure accuracy and consistency.
 
+## What is Satellite Visibility Window Calculation?
+
+A **visibility window** is a time period when a satellite is visible from a specific location on Earth. This occurs when the satellite rises above the horizon (at a minimum elevation angle) and remains visible until it sets below that angle again.
+
+### Key Concepts
+
+- **Elevation Angle**: The vertical angle between the horizon and the satellite. 0° means the satellite is on the horizon, 90° means directly overhead (zenith).
+- **Azimuth**: The horizontal direction (compass bearing) where the satellite appears. 0° is North, 90° is East, 180° is South, 270° is West.
+- **Range**: The direct line-of-sight distance from the observer to the satellite (measured in kilometers).
+- **Visibility Window**: A continuous time period when elevation is above a minimum threshold (typically 10°).
+
+### Why This Matters
+
+Accurate visibility predictions are critical for:
+- **Ground station operations**: Knowing when to communicate with satellites
+- **Satellite photography**: Planning when to capture images of satellites
+- **Amateur radio**: Timing communication windows with satellites
+- **Space situational awareness**: Tracking satellite positions for collision avoidance
+- **Scientific observations**: Scheduling telescope time for satellite observations
+
+This framework validates that different SGP4 implementations produce consistent and accurate visibility predictions across multiple programming languages.
+
 ## Overview
 
 This project provides:
