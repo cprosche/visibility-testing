@@ -4,7 +4,7 @@ Alternative implementation using the pure Python sgp4 library directly for satel
 
 ## Overview
 
-This implementation uses the [sgp4](https://pypi.org/project/sgp4/) library, which provides a pure Python implementation of the SGP4 satellite propagation algorithm. Unlike Skyfield, this library is lower-level and requires manual coordinate transformations.
+This implementation uses the [sgp4](https://github.com/brandon-rhodes/python-sgp4) library, which provides a pure Python implementation of the SGP4 satellite propagation algorithm. Unlike Skyfield, this library is lower-level and requires manual coordinate transformations.
 
 **Status**: Functional - Coordinate transformation fixed, 100% window detection match with reference.
 

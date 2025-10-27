@@ -432,25 +432,25 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 ### Satellite Tracking Libraries
 
 **Python**:
-- [Skyfield](https://rhodesmill.org/skyfield/) - Primary reference, high accuracy
-- [sgp4](https://pypi.org/project/sgp4/) - Pure Python implementation
-- [PyEphem](https://rhodesmill.org/pyephem/) - Legacy but widely used
+- [Skyfield](https://github.com/skyfielders/python-skyfield) - Primary reference, high accuracy
+- [sgp4](https://github.com/brandon-rhodes/python-sgp4) - Pure Python implementation
+- [PyEphem](https://github.com/brandon-rhodes/pyephem) - Legacy but widely used
 
 **JavaScript/TypeScript**:
 - [satellite.js](https://github.com/shashwatak/satellite-js) - Most popular JS library
 - [sgp4](https://www.npmjs.com/package/sgp4) - Alternative npm package
 
 **Rust**:
-- [sgp4 crate](https://crates.io/crates/sgp4) - Primary Rust implementation
+- [sgp4](https://github.com/neuromorphicsystems/sgp4) - Primary Rust implementation
 - Other Rust libraries TBD
 
 **C++**:
-- [Vallado SGP4](https://www.danrw.com/sgp4/) - Reference C++ implementation
+- [Vallado SGP4](https://celestrak.com/software/vallado-sw.php) - Reference C++ implementation
 - [libsgp4](https://github.com/dnwrnr/sgp4) - Alternative library
 
 **C#**:
-- [SGP.NET](https://www.danrw.com/sgp4-net/) - .NET port of Vallado's code
-- [Zeptomoby.OrbitTools](https://www.zeptomoby.com/satellites/) - Alternative .NET library
+- [SGP.NET](https://github.com/parzivail/SGP.NET) - .NET port of Vallado's code
+- [Zeptomoby.OrbitTools](http://www.zeptomoby.com/satellites/) - Alternative .NET library
 
 ### References
 - [Simplified General Perturbations #4 (SGP4)](https://en.wikipedia.org/wiki/Simplified_perturbations_models)

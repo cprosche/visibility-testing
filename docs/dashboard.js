@@ -132,9 +132,17 @@ function formatImplName(impl) {
 }
 
 function getImplRepoLink(impl) {
-    // GitHub repository base URL
-    const baseUrl = 'https://github.com/caderosche/visibility-testing/tree/main/implementations';
-    return `${baseUrl}/${impl}`;
+    // Map implementations to their library source repositories
+    const libraryLinks = {
+        'python-skyfield': 'https://github.com/skyfielders/python-skyfield',
+        'python-sgp4': 'https://github.com/brandon-rhodes/python-sgp4',
+        'javascript-satellite.js': 'https://github.com/shashwatak/satellite-js',
+        'rust-sgp4': 'https://github.com/neuromorphicsystems/sgp4',
+        'cpp-sgp4': 'https://celestrak.com/software/vallado-sw.php',
+        'csharp-sgp.net': 'https://github.com/parzivail/SGP.NET'
+    };
+    
+    return libraryLinks[impl] || `https://github.com/caderosche/visibility-testing/tree/main/implementations/${impl}`;
 }
 
 function getLanguageFromImpl(impl) {
@@ -176,7 +184,7 @@ function renderPerformanceTable() {
         row.innerHTML = `
             <td><span class="rank-badge ${rankClass}">${index + 1}</span></td>
             <td>
-                <a href="${getImplRepoLink(data.name)}" target="_blank" class="impl-link" title="View source code">
+                <a href="${getImplRepoLink(data.name)}" target="_blank" class="impl-link" title="View library repository">
                     <strong>${formatImplName(data.name)}</strong>
                 </a>
             </td>
@@ -414,7 +422,7 @@ function renderAccuracyRankings() {
         row.innerHTML = `
             <td><span class="rank-badge ${rankClass}">${index + 1}</span></td>
             <td>
-                <a href="${getImplRepoLink(data.impl)}" target="_blank" class="impl-link" title="View source code">
+                <a href="${getImplRepoLink(data.impl)}" target="_blank" class="impl-link" title="View library repository">
                     <strong>${formatImplName(data.impl)}</strong>
                 </a>
             </td>
@@ -501,7 +509,7 @@ function renderAccuracyByImplementation() {
         card.innerHTML = `
             <div class="accuracy-impl-header">
                 <div>
-                    <a href="${getImplRepoLink(impl)}" target="_blank" class="impl-link impl-link-large" title="View source code">
+                    <a href="${getImplRepoLink(impl)}" target="_blank" class="impl-link impl-link-large" title="View library repository">
                         <div class="accuracy-impl-name">${formatImplName(impl)}</div>
                     </a>
                     <span class="lang-badge lang-${getLanguageFromImpl(impl)}">${getLanguageFromImpl(impl)}</span>
@@ -690,7 +698,7 @@ function renderImplementationDetails() {
 
         card.innerHTML = `
             <div class="impl-header">
-                <a href="${getImplRepoLink(impl)}" target="_blank" class="impl-link impl-link-large" title="View source code">
+                <a href="${getImplRepoLink(impl)}" target="_blank" class="impl-link impl-link-large" title="View library repository">
                     <div class="impl-name">${formatImplName(impl)}</div>
                 </a>
                 <span class="lang-badge lang-${getLanguageFromImpl(impl)}">${getLanguageFromImpl(impl)}</span>
