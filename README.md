@@ -17,7 +17,7 @@ A **visibility window** is a time period when a satellite is visible from a spec
 
 - **Elevation Angle**: The vertical angle between the horizon and the satellite. 0° means the satellite is on the horizon, 90° means directly overhead (zenith).
 - **Azimuth**: The horizontal direction (compass bearing) where the satellite appears. 0° is North, 90° is East, 180° is South, 270° is West.
-- **Range**: The direct line-of-sight distance from the observer to the satellite.
+- **Range**: The direct line-of-sight distance from the observer to the satellite (measured in kilometers).
 - **Visibility Window**: A continuous time period when elevation is above a minimum threshold (typically 10°).
 
 ### Why This Matters
